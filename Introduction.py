@@ -306,11 +306,203 @@ for eA, eB in product(equipeA, equipeB):
     print(f"{eA} vs {eB}")
 
 
-# In[ ]:
+# In[36]:
 
 
 # Faite une fonction dire bonjour 
 # Qui retourne "bonjour {nom}" si le parametre lng est "FR"
 # Qui retourne "Hello {nom}" si le parametre lng est "EN"
 # Par défaut lng = "FR"
+def dire_bonjour(nom, lng="FR"):
+    if lng == "FR":
+        return f"Bonjour {nom}"
+    else:
+        return f"Hello {nom}"
+
+def dire_bonjour(nom, lng="FR"):
+    return f"Bonjour {nom}" if lng == "FR" else f"Hello {nom}"
+
+dire_bonjour("Romain")
+dire_bonjour("Justine", "EN")
+
+
+# In[37]:
+
+
+a = 2
+
+def affiche_a():
+    print(a)
+    
+affiche_a()
+
+
+# In[38]:
+
+
+a = 2
+
+def affiche_a():
+    print(a)
+
+a = 4
+
+affiche_a()
+
+
+# In[41]:
+
+
+a = 2
+
+def affiche_a():
+    a = 5
+    print(f"interieur {a}")
+
+a = 4
+
+affiche_a()
+print(f"exterieur {a}")
+
+
+# In[42]:
+
+
+a = 2
+
+def affiche_a():
+    print(f"interieur {a}")
+    a = 5
+
+a = 4
+
+affiche_a()
+print(f"exterieur {a}")
+
+
+# In[43]:
+
+
+a = 2
+
+def affiche_a():
+    global a
+    print(f"interieur {a}")
+    a = 5
+
+a = 4
+
+affiche_a()
+print(f"exterieur {a}")
+
+
+# In[47]:
+
+
+a = 2
+config = {"a": 2}
+
+def affiche_a(param_a_modifer):
+    print(f"interieur {param_a_modifer}")
+    param_a_modifer["a"] = 5
+
+a = 4
+config = {"a": 4}
+
+affiche_a(config)
+print(f"exterieur {config}")
+
+
+# In[48]:
+
+
+a = 2
+config = [12,4,7]
+
+def affiche_a(param_a_modifer):
+    print(f"interieur {param_a_modifer}")
+    param_a_modifer[0] = 5
+
+a = 4
+
+affiche_a(config)
+print(f"exterieur {config}")
+
+
+# In[49]:
+
+
+a = 2
+config = (12,4,7)
+
+def affiche_a(param_a_modifer):
+    print(f"interieur {param_a_modifer}")
+    param_a_modifer[0] = 5
+
+a = 4
+
+affiche_a(config)
+print(f"exterieur {config}")
+
+
+# In[51]:
+
+
+liste = [1,4]
+liste.append(5)
+print(liste)
+liste.extend([5,4])
+print(liste)
+
+
+# In[55]:
+
+
+def tri_bulle(arr):
+    for j in range(len(arr)-1):
+        for i in range(len(arr)-1):
+            if arr[i] > arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+    return arr
+
+tri_bulle([25,12,67,45,2,8,0])
+
+
+# In[58]:
+
+
+def fusion(arr1, arr2):
+    i, j = 0, 0
+    resultat = []
+    while i<len(arr1) and j<len(arr2):
+        if arr1[i] < arr2[j]:
+            resultat.append(arr1[i])
+            i += 1
+        else:
+            resultat.append(arr2[j])
+            j += 1
+    resultat.extend(arr1[i:])
+    resultat.extend(arr2[j:])
+    return resultat
+
+fusion([3,5,6,7], [1,4,5,12])
+
+def tri_fusion(arr):
+    if len(arr)<=1:
+        return arr
+    elif len(arr) == 2:
+        return arr if arr[0] < arr[1] else arr[::-1]
+    else:
+        return fusion(
+            tri_fusion(arr[:len(arr)//2]),
+            tri_fusion(arr[len(arr)//2:])
+        )
+    
+tri_fusion([4,9,7,2,6,1,8,5])
+
+
+# In[ ]:
+
+
+
 
