@@ -501,6 +501,54 @@ def tri_fusion(arr):
 tri_fusion([4,9,7,2,6,1,8,5])
 
 
+# In[59]:
+
+
+ma_liste = ['9 900 000 €',
+ '6 300 000 €',
+ '1 600 000 €',
+ '1 790 000 €',
+ '1 988 000 €',
+ '2 470 000 €',
+ '1 080 000 €',
+ '619 000 €',
+ '630 000 €',
+ '620 000 €',
+ '825 000 €',
+ '415 000 €',
+ '1 670 000 €',
+ '1 750 000 €',
+ '2 290 000 €',
+ '1 799 000 €',
+ '3 120 000 €',
+ 'bouquet\n294 660 €',
+ '1 750 000 €',
+ 'de 3M à 10M €',
+ '1 995 000 €',
+ '425 000 €',
+ '542 000 €',
+ '1 600 000 €',
+ '850 000 €']
+ 
+
+
+# In[60]:
+
+
+import re
+
+
+# In[69]:
+
+
+def extract_price(element):
+    prix = re.findall("[0-9]+", element)
+    return int("".join(prix))
+
+liste_prix = [extract_price(elem) for elem in ma_liste]
+sum(liste_prix) / len(liste_prix)
+
+
 # In[ ]:
 
 
