@@ -82,8 +82,235 @@ else:
 # 
 # 
 
+# ## https://github.com/komi24/cours211019
+
+# In[10]:
+
+
+for i in range(101):
+    if i % 5 == 0 and i % 3 == 0: # i % 15 == 0
+        print("bazz")
+    elif i % 3 == 0:
+        print("fizz")
+    elif i % 5 == 0:
+        print("buzz")
+    else:
+        print(i)
+
+
+# In[1]:
+
+
+# On importe la fonction randint de la librairie random
+from random import randint as rd
+
+# import random
+# random.randint(0,100)
+
+secret = rd(0,100)
+proposition_utilisateur = None
+
+while proposition_utilisateur != secret:
+    proposition_utilisateur = int(input("Quelle est votre proposition ?"))
+    if proposition_utilisateur < secret:
+        print("trop petit")
+    elif proposition_utilisateur > secret:
+        print("trop grand")
+    else:
+        print("Gagné")
+
+
+# In[4]:
+
+
+borne_min = 0
+borne_max = 101
+
+reponse_utilisateur = None
+
+while reponse_utilisateur != "E": 
+    proposition = (borne_min + borne_max) // 2
+    reponse_utilisateur = input(f"Est-ce que le secret est {proposition} ? P/G/E")
+    if reponse_utilisateur == "P":
+        borne_max = proposition
+    elif reponse_utilisateur == "G":
+        borne_min = proposition
+
+print("Bien joué")
+
+
+# ## Comprehensive list et ternaires 
+
+# In[8]:
+
+
+liste_ages = [32,53,12,8,36]
+
+par2 = [elm * 2 for elm in liste_ages]
+print(par2)
+
+restes = [elm % 2 == 0 for elm in liste_ages]
+print(restes)
+
+majeurs = [elm for elm in liste_ages if elm * 2 >= 100]
+print(majeurs)
+
+
+# In[9]:
+
+
+age = 36
+
+etat = "majeur" if age >= 18 else "mineur"
+print(etat)
+
+
+# ## Les fonctions
+
+# In[11]:
+
+
+# Définition d'une fonction
+def dire_bonjour():
+    print("Bonjour tout le monde")
+
+# Utilisation d'une fonction
+dire_bonjour()
+# Utilisation d'une fonction
+dire_bonjour()
+
+
+# In[12]:
+
+
+def dire_bonjour(nom):
+    return f"Bonjour {nom}"
+
+resultat = dire_bonjour("Mathieu")
+print(resultat)
+
+
+# In[14]:
+
+
+def dire_bonjour(nom, nom2, nom3):
+    return f"Bonjour {nom} {nom2} {nom3}"
+
+resultat = dire_bonjour("Mathieu", "Elise", "Gerard")
+print(resultat)
+
+
+# In[20]:
+
+
+def dire_bonjour(nom, nom2="", nom3="", age=15):
+    print(f"nom2 : {nom2}")
+    print(f"nom3 : {nom3}")
+    return f"Bonjour {nom} {nom2} {nom3}", age
+
+resultat, age = dire_bonjour("Mathieu", "Elise", "Gerard")
+print(resultat)
+resultat, age = dire_bonjour("Mathieu")
+print(resultat)
+resultat, age = dire_bonjour("Mathieu", "Helene")
+print(resultat)
+resultat, age = dire_bonjour("Mathieu", nom3="Helene")
+print(resultat)
+print(age)
+
+
+# In[29]:
+
+
+personne = {
+    "nom": "Dupont",
+    "prenom": "Martin",
+    "age": 37,
+    "liste_matieres": ["SVT", "Maths", "EPS"],
+    True: dire_bonjour
+}
+
+print(personne["nom"])
+print(personne["prenom"])
+print(personne["liste_matieres"][-1])
+
+personne[True]("Martin")
+
+liste_prenoms = ["Martin", "Laurent", "Eloise", "Eugenie"]
+
+liste_personnes = [{
+    "nom": "Dupont",
+    "prenom": prenom
+} for prenom in liste_prenoms]
+
+print(liste_personnes)
+
+
+# In[27]:
+
+
+def dire_bonjour_en():
+    print("Hello world")
+def dire_bonjour_fr():
+    print("Bonjour")
+def dire_bonjour_es():
+    print("Hola")
+def dire_bonjour_pt():
+    print("Oi")
+def dire_bonjour_zh():
+    print("Ni hao")
+
+langues = {
+    "EN": dire_bonjour_en,
+    "FR": dire_bonjour_fr,
+    "ES": dire_bonjour_es,
+    "PT": dire_bonjour_pt,
+    "ZH": dire_bonjour_zh,
+}
+
+lng = input(f"Quel est votre langue ?")
+langues[lng]()
+
+
+# In[30]:
+
+
+liste_prenoms = ["Martin", "Laurent", "Eloise", "Eugenie"]
+liste_ages = [45, 58, 23]
+
+liste_personnes = [{
+    "nom": "Dupont",
+    "prenom": prenom,
+    "age": age
+} for prenom, age in zip(liste_prenoms, liste_ages)]
+
+print(liste_personnes)
+
+
+# In[31]:
+
+
+for i, prenom in enumerate(liste_prenoms):
+    print(f"Le {i}eme prenom est {prenom}")
+
+
+# In[32]:
+
+
+equipeA = ["John", "Elie", "Enora"]
+equipeB = ["Mathis", "Maud", "Yael"]
+
+from itertools import product 
+
+for eA, eB in product(equipeA, equipeB):
+    print(f"{eA} vs {eB}")
+
+
 # In[ ]:
 
 
-
+# Faite une fonction dire bonjour 
+# Qui retourne "bonjour {nom}" si le parametre lng est "FR"
+# Qui retourne "Hello {nom}" si le parametre lng est "EN"
+# Par défaut lng = "FR"
 
