@@ -5,4 +5,4 @@
 from MonPackage.module_bonjour import dire_bonjour
 
 #module_bonjour.dire_bonjour()
-dire_bonjour("Tata", "EN")
+dire_bonjour(2, "EN")

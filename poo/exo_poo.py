@@ -11,15 +11,15 @@ from time import sleep
 """
 #v1 = Voiture([2], [1])
 #v1 = Voiture(6, 4)
-v2 = Voiture([4,3], [0,-1])
+#v2 = Voiture([4,3], [0,-1])
 #print(dir(v2))
 
-print(v2)
-v2.avancer()
-print(v2)
-v2.tourner()
-v2.avancer()
-print(v2)
+#print(v2)
+#v2.avancer()
+#print(v2)
+#v2.tourner()
+#v2.avancer()
+#print(v2)
 
 """
     Etape 1 : Dans la classe voiture, modifier avancer() de manière à
@@ -42,7 +42,7 @@ print(v2)
             sur les obstacles
 """
 
-b = Board()
+b = Board(10)
 
 for i in range(20):
     os.system("cls")

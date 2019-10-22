@@ -41,13 +41,13 @@ class Voiture:
         self.direction = np.array(direction)
         self.marque = marque
     
-    def avancer(self):
+    def avancer(self, check_obstacle):
         new_position = self.position + self.direction
-        if (new_position <= 10).all() and (new_position >= 0).all():
+        if check_obstacle(new_position):
             self.position = new_position
         else:
             self.tourner()
-            self.avancer()
+            #self.avancer(check_obstacle)
         
     def tourner(self):
         self.direction = np.array([[0,1],[-1,0]]).dot(self.direction)

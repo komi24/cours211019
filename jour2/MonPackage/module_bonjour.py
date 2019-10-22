@@ -1,7 +1,7 @@
 #from . import LNG_DEFAULT
 
 
-def dire_bonjour(name, lng="FR"):
+def dire_bonjour(name: str, lng="FR"):
     if lng == "EN":
         dire_bonjour_en(name)
     if lng == "ES":
