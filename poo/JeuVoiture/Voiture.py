@@ -42,7 +42,12 @@ class Voiture:
         self.marque = marque
     
     def avancer(self):
-        self.position += self.direction
+        new_position = self.position + self.direction
+        if (new_position <= 10).all() and (new_position >= 0).all():
+            self.position = new_position
+        else:
+            self.tourner()
+            self.avancer()
         
     def tourner(self):
         self.direction = np.array([[0,1],[-1,0]]).dot(self.direction)
