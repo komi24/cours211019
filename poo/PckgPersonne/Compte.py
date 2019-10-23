@@ -14,8 +14,10 @@ class SoldeInsuffisantException(Exception):
 
 
 class Compte:
+    nb_compte = 0
     def __init__(self, solde_init):
         self._solde = solde_init
+        Compte.nb_compte += 1
     
     def retrait(self, montant):
         if montant < 0:

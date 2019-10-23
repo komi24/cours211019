@@ -25,7 +25,7 @@ une_personne = Personne("Maxence", "Bouret", 10000)
 autre_personne = Personne("Yacine", "Hmito", 5000)
 
 try:
-    une_personne.transfert(200000, autre_personne)
+    une_personne.transfert(2000, autre_personne)
     
     une_personne.dire_bonjour()
     autre_personne.dire_bonjour()
@@ -37,4 +37,11 @@ except MontantNegatifException:
 except:
     print("Une autre erreur est survenue")
 
+print("bonjour")
 
+def check_if_belong_to(instance, cls):
+    return type(instance)== cls
+
+print(Compte.nb_compte)
+
+print(check_if_belong_to(une_personne, Compte))
