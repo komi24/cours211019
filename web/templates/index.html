@@ -38,15 +38,17 @@
         {% for article in articles %}
         <div class="col s12 m3">
             <div class="card">
-                <div class="card-image">
-                    <img src="/public/images/{{article.image}}">
-                    <span class="card-title" style="color: black;">{{ article.titre }} - {{ article.prix }}€</span>
-                </div>
+                <a href="/article/{{article.id}}">
+                    <div class="card-image">
+                        <img src="/public/images/{{article.image}}">
+                        <span class="card-title" style="color: black;">{{ article.titre }} - {{ article.prix }}€</span>
+                    </div>
+                </a>
                 <div class="card-content">
                     <p>{{article.description}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="#">This is a link</a>
+                    <a href="/delete/{{article.id}}">Supprimer</a>
                 </div>
             </div>
         </div>
