@@ -55,7 +55,7 @@
 
 
     <div class="row">
-        <form class="col s12" action="/form" method="POST">
+        <form class="col s12" action="/form" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s6">
                     <input name="titre" placeholder="Veuillez entrer un Titre" type="text" class="validate">
@@ -74,7 +74,16 @@
                     <label>Description</label>
                 </div>
             </div>
-            <input type="submit" />
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Image</span>
+                    <input name="img" type="file">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+            <input type="submit" class="btn"/>
         </form>
     </div>
 
