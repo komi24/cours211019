@@ -1,20 +1,21 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, redirect
 from uuid import uuid4
+from models import db
+from models.Article import Article
 
 
 app = Flask(__name__, static_url_path="/public", static_folder="public")
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///courspython.sqlite3"
 
-liste_articles = [
-    {"title": "Cartes graphique", "prix": "700", "description": "Une carte graphique...", "img": "gpu.png"},
-    {"title": "Disque dur", "prix": "300", "description": "Un disque dur...", "img": "hdd.jpg"},
-    {"title": "Clavier", "prix": "7", "description": "Un clavier...", "img": "clavier.jpg"},
-    {"title": "Souris", "prix": "6", "description": "Une souris...", "img": "souris.jpg"},
-    {"title": "Pomme", "prix": "1200", "description": "Une pomme...", "img": "apple.jpg"},
-]
+with app.app_context():
+    db.init_app(app)
+    db.create_all()
+
 
 @app.route("/")
 def home():
+    liste_articles = Article.query.all()
     return render_template("index.html", articles=liste_articles)
 
 @app.route("/contacts/<name>")
@@ -30,12 +31,14 @@ def form():
     file_img = request.files["img"]
     filename = str(uuid4()) + file_img.filename
     file_img.save(f"public/images/{filename}")
-    liste_articles.append({
-        "title": request.form.get("titre"),
-        "prix": request.form.get("prix"),
-        "description": request.form.get("desc"),
-        "img": filename
-    })
+    article = Article(
+        titre=request.form.get("titre"),
+        prix=request.form.get("prix"),
+        description=request.form.get("desc"),
+        image=filename
+    )
+    db.session.add(article)
+    db.session.commit()
     return redirect("/")
 
 app.run(port=5000, debug=True)
