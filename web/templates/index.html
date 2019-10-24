@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cours Python</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Cours Python</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/contacts/mickael">Contact de Mickael</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Ceci est un titre</h1>
+        <h2>Sous titre</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam inventore doloribus error doloremque
+            repudiandae, id harum tempore minima molestiae itaque, fugit in ipsa temporibus deserunt, ab minus
+            perspiciatis adipisci corporis?</p>
+    </div>
+
+
+    <div class="row">
+        {% for article in articles %}
+        <div class="col s12 m3">
+            <div class="card">
+                <div class="card-image">
+                    <img src="/public/images/{{article.img}}">
+                    <span class="card-title" style="color: black;">{{ article.title }} - {{ article.prix }}€</span>
+                </div>
+                <div class="card-content">
+                    <p>{{article.description}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="row">
+        <form class="col s12" action="/form" method="POST">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input name="titre" placeholder="Veuillez entrer un Titre" type="text" class="validate">
+                    <label>Titre</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input name="prix" placeholder="Veuillez entrer un Prix" type="text" class="validate">
+                    <label>Prix</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input name="desc" placeholder="Veuillez entrer une Description" type="text" class="validate">
+                    <label>Description</label>
+                </div>
+            </div>
+            <input type="submit" />
+        </form>
+    </div>
+
+</body>
+
+</html>

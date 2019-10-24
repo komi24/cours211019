@@ -46,7 +46,7 @@ class CalcUI:
         pass
         
     def start(self):
-        self.fen.mainloop()
+        self.fen.mainloop() 
         
         
         
