@@ -6,6 +6,7 @@ from models.Article import Article
 import os
 
 
+
 app = Flask(__name__, static_url_path="/public", static_folder="public")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///courspython.sqlite3"
 
@@ -36,6 +37,7 @@ def form():
         titre=request.form.get("titre"),
         prix=request.form.get("prix"),
         description=request.form.get("desc"),
+        location=request.form.get("location"),
         image=filename
     )
     db.session.add(article)

@@ -42,6 +42,14 @@ class Voiture:
         self.marque = marque
     
     def avancer(self, check_obstacle):
+        """
+        Fonction qui fait avancer une voiture du vecteur direction
+        :Example:
+        >>> voiture = Voiture()
+        >>> voiture.avancer(lambda x:True)
+        >>> voiture.position
+        array([1, 0])
+        """
         new_position = self.position + self.direction
         if check_obstacle(new_position):
             self.position = new_position
@@ -54,3 +62,8 @@ class Voiture:
         
     def __str__(self):
         return str(self.position)
+    
+    
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()

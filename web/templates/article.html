@@ -27,11 +27,18 @@
     <div class="container">
         <h1>{{article.titre}}</h1>
         <h4>{{article.description}}</h4>
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=La+Defense,Paris,FR&zoom=13&size=600x300&maptype=roadmap
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center={{article.location}}&zoom=9&size=600x300&maptype=roadmap
         &markers=color:blue%7Clabel:S%7C48.888595, 2.248614
-        &key=" alt="">
+        &key=AIzaSyDwQFHiUz_sQOYbIDSrX9N-H7UVA7cpVRo" alt="">
         
     </div>
+
+    <!-- <script>
+        setInterval(()=>{
+            console.log("hello")
+            window.location.reload()
+        }, 5000)
+    </script> -->
 </body>
 
 </html>

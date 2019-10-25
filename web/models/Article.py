@@ -6,4 +6,5 @@ class Article(db.Model):
     titre = db.Column(db.String(100))
     description = db.Column(db.String(100))
     image = db.Column(db.String(100))
+    location = db.Column(db.String(100))
     
